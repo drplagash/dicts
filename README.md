@@ -6,7 +6,7 @@ This repository is intentionally separate from payload and malware analysis repo
 
 ## Visibility
 
-This repository must remain private.
+This repository is for statistical purposes only.
 
 It contains raw observed credential material collected from defensive honeypot telemetry.
 
