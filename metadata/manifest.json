@@ -39,6 +39,13 @@
   },
   "generated_utc": "2026-08-16T14:43:34.180362+00:00",
   "github_visibility_required": "private",
+  "historical_notes": [
+    "MariaDB historical credential observations were synced into tpot_credential_events.",
+    "Historical rows contain usernames, source IPs and timing, but password_raw is empty.",
+    "Password dictionaries include only rows where raw password was actually stored.",
+    "Username dictionaries include historical usernames."
+  ],
+  "historical_username_file": "raw/usernames.historical.txt",
   "includes_source_ips": false,
   "lookback_days": 30,
   "raw_passwords_included": true,
@@ -47,6 +54,7 @@
     "clean_rows": 1606,
     "clean_unique_passwords": 1101,
     "clean_unique_usernames": 743,
+    "clean_unique_usernames_with_history": 3355,
     "clean_unique_userpass_pairs": 1606,
     "control_rows": 2,
     "hashlike_rows": 155,
