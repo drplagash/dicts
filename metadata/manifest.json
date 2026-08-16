@@ -5,6 +5,24 @@
     "unique_usernames": 750,
     "unique_userpass_pairs": 1763
   },
+  "dictionary_policy": {
+    "main_download_files": [
+      "raw/passwords.clean.txt",
+      "raw/usernames.clean.txt",
+      "raw/userpass.clean.tsv",
+      "raw/userpass.clean.observed.tsv"
+    ],
+    "notes": [
+      "Clean dictionaries exclude control characters and hex-like hash-shaped password values.",
+      "Hash-like values are preserved separately for analysis.",
+      "Control-character values are preserved escaped, not as raw terminal-breaking text."
+    ],
+    "suspicious_separated_files": [
+      "raw/passwords.hashlike.txt",
+      "raw/userpass.hashlike.tsv",
+      "raw/userpass.control_escaped.tsv"
+    ]
+  },
   "files": {
     "derived": [
       "derived/passwords.sha256.txt",
@@ -25,6 +43,16 @@
   "lookback_days": 30,
   "raw_passwords_included": true,
   "raw_passwords_publication": false,
+  "sanitized_counts": {
+    "clean_rows": 1606,
+    "clean_unique_passwords": 1101,
+    "clean_unique_usernames": 743,
+    "clean_unique_userpass_pairs": 1606,
+    "control_rows": 2,
+    "hashlike_rows": 155,
+    "hashlike_unique_passwords": 53
+  },
+  "sanitized_utc": "2026-08-16T15:07:59.179711+00:00",
   "scope": "oraculo_tpot_private_credential_dictionary",
   "source_table": "tpot_credential_events"
 }
