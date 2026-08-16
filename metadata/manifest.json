@@ -1,0 +1,30 @@
+{
+  "counts": {
+    "observed_rows": 1770,
+    "unique_passwords": 1155,
+    "unique_usernames": 750,
+    "unique_userpass_pairs": 1763
+  },
+  "files": {
+    "derived": [
+      "derived/passwords.sha256.txt",
+      "derived/userpass.sha256.tsv",
+      "derived/userpass.masked.tsv",
+      "derived/userpass.observed.masked.tsv"
+    ],
+    "raw_private": [
+      "raw/passwords.txt",
+      "raw/usernames.txt",
+      "raw/userpass.tsv",
+      "raw/userpass.observed.tsv"
+    ]
+  },
+  "generated_utc": "2026-08-16T14:43:34.180362+00:00",
+  "github_visibility_required": "private",
+  "includes_source_ips": false,
+  "lookback_days": 30,
+  "raw_passwords_included": true,
+  "raw_passwords_publication": false,
+  "scope": "oraculo_tpot_private_credential_dictionary",
+  "source_table": "tpot_credential_events"
+}
