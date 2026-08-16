@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/portada.svg" alt="Credential Dictionaries" width="100%">
+</p>
+
 # Oráculo SOC - Private Credential Dictionaries
 
 Private credential dictionaries generated from Oráculo SOC honeypot telemetry.
