@@ -4,67 +4,53 @@
 
 # dicts
 
-Private credential dictionary workspace for Oraculo SOC.
+Diccionarios privados de Oráculo SOC.
 
-This repository is private and exists for internal SOC work: reviewing credential attempts seen by honeypots, measuring patterns, and building controlled lab dictionaries.
+Este repo es para uso interno. Acá no quiero una vidriera llena de carpetas raras: quiero abrir, encontrar las claves, encontrar los pares usuario/password y seguir trabajando como una persona normal, no como un arqueólogo de YAML.
 
-## Quick view
+## Acceso rápido
 
-Use the raw files when the viewer is the authorized repo owner or an internal analyst.
+| Quiero ver | Archivo |
+|---|---|
+| Listado actualizado de claves/passwords | [`raw/passwords.txt`](raw/passwords.txt) |
+| Pares usuario/password observados | [`raw/userpass.observed.tsv`](raw/userpass.observed.tsv) |
 
-Use the derived files only when a safer export is needed.
+Esos son los dos archivos principales. La rutina debería mantenerlos actualizados.
+
+## Para análisis interno
+
+- `raw/passwords.txt`: lista directa de claves observadas.
+- `raw/userpass.observed.tsv`: pares usuario/password observados, con contexto de aparición cuando aplique.
+
+No usar la vista con `***` para análisis interno. Los archivos masked existen solo para exportar o mostrar sin exponer valores completos. Para mí, en privado, se usa la vista legible.
+
+## Hashes
+
+Los hashes se dejan en `derived/` para control, comparación y export seguro. No son el camino principal para revisar el repo.
+
+## Qué no mirar primero
+
+- `derived/`: transformaciones, hashes y versiones masked.
+- `metadata/`: manifiestos y contexto técnico.
+- `docs/`: assets y documentación auxiliar.
+
+Sirven, pero no son la entrada humana principal.
+
+## Regla simple
+
+Para trabajar:
 
 ```text
-raw/      = owner/internal view, values are readable
-metadata/ = generation context and manifests
-derived/  = hashes, masks and safer transformed exports
+raw/passwords.txt
+raw/userpass.observed.tsv
 ```
 
-## What this repo is for
+Para exportar o mostrar algo sin valores completos:
 
-- Reviewing usernames and passwords observed in defensive honeypot telemetry.
-- Measuring repeated credential attempts and basic patterns.
-- Building internal dictionaries for controlled lab validation.
-- Keeping credential-derived material separated from payload and malware analysis.
+```text
+derived/
+```
 
-## What this repo is not for
+## Nota
 
-- It is not a public leak dump.
-- It is not a payload or malware repository.
-- It is not for third-party targeting.
-- It is not for publishing real credentials outside this private workspace.
-
-## Human map
-
-| Area | Purpose |
-|---|---|
-| `raw/` | Original internal exports. Use these when you need the real observed values. |
-| `metadata/` | Manifest and generation context. |
-| `derived/` | Hashed or masked versions for safer export/review. |
-| `docs/` | Supporting documentation and visual assets. |
-
-## Important files
-
-| File | Meaning |
-|---|---|
-| `raw/passwords.txt` | Observed password candidates in readable form. |
-| `raw/usernames.txt` | Observed username candidates in readable form. |
-| `raw/userpass.tsv` | Username/password pairs in readable form for controlled lab use. |
-| `raw/userpass.observed.tsv` | Observed credential pair material in readable form. |
-| `derived/passwords.sha256.txt` | SHA256-transformed password list. |
-| `derived/userpass.sha256.tsv` | SHA256-transformed credential pairs. |
-| `derived/userpass.masked.tsv` | Masked credential pairs for safe sharing. |
-| `derived/userpass.observed.masked.tsv` | Masked observed pairs for safe sharing. |
-| `metadata/manifest.json` | Manifest for dictionary generation and structure. |
-
-## Owner view versus safe export
-
-For private owner review, show the readable files from `raw/`.
-
-For screenshots, public writeups, or any export outside the private repo, use `derived/` masked or hashed files.
-
-The masked `***` files exist only for safe export. They are not the main analyst view.
-
-## Publication rules
-
-This repository must remain private. Public work belongs in `payloads`, `security-tools` or profile-level documentation. Credential-derived material stays here, isolated and controlled.
+Este repo debe seguir privado. El material público va en `payloads`. Los diccionarios son material operativo interno.
