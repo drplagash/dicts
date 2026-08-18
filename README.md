@@ -2,41 +2,51 @@
   <img src="docs/portada.svg" alt="Credential Dictionaries" width="100%">
 </p>
 
-# Oráculo SOC - Private Credential Dictionaries
+# dicts
 
-Private credential dictionaries generated from Oráculo SOC honeypot telemetry.
+Private credential dictionary workspace for Oráculo SOC.
 
-This repository is intentionally separate from payload and malware analysis repositories.
+This repository stores sanitized wordlist material derived from defensive honeypot telemetry. It exists to support password-pattern analysis, lab testing and internal SOC workflows. It is not a payload repository, not a malware repository and not a public leak dump.
 
-## Visibility
+## What this repo is for
 
-This repository is for statistical purposes only.
+- Measuring which usernames and passwords appear in honeypot traffic.
+- Building safe internal dictionaries for controlled lab validation.
+- Keeping credential-derived material separated from payload and malware analysis.
+- Preserving enough metadata to understand how the files were produced.
 
-It contains raw observed credential material collected from defensive honeypot telemetry.
+## What this repo is not for
 
-## Contents
+- No real credential publishing.
+- No source IP attribution in dictionary exports.
+- No mixing with malware samples or payload evidence.
+- No third-party targeting.
+- No public operational abuse feed.
 
-### Raw private dictionaries
+## Human map
 
-- `raw/passwords.txt`
-- `raw/usernames.txt`
-- `raw/userpass.tsv`
-- `raw/userpass.observed.tsv`
+| Area | Purpose |
+|---|---|
+| `raw/` | Original internal dictionary exports from observed honeypot credential attempts. |
+| `derived/` | Hashed, masked or transformed versions for safer internal use. |
+| `metadata/` | Manifest and generation context. |
+| `docs/` | Supporting documentation and visual assets. |
 
-### Derived dictionaries
+## Important files
 
-- `derived/passwords.sha256.txt`
-- `derived/userpass.sha256.tsv`
-- `derived/userpass.masked.tsv`
-- `derived/userpass.observed.masked.tsv`
+| File | Meaning |
+|---|---|
+| `raw/passwords.txt` | Observed password candidates. |
+| `raw/usernames.txt` | Observed username candidates. |
+| `raw/userpass.tsv` | Username/password pairs for controlled lab use. |
+| `raw/userpass.observed.tsv` | Observed credential pair material. |
+| `derived/passwords.sha256.txt` | SHA256-transformed password list. |
+| `derived/userpass.sha256.tsv` | SHA256-transformed credential pairs. |
+| `derived/userpass.masked.tsv` | Masked credential pairs. |
+| `metadata/manifest.json` | Manifest for dictionary generation and structure. |
 
-### Metadata
+## Publication rules
 
-- `metadata/manifest.json`
+This repository must remain private. Public work belongs in `payloads`, `security-tools` or profile-level documentation. Credential-derived material stays here, isolated and controlled.
 
-## Rules
-
-- Do not move these files into payload analysis.
-- Do not mix these files with malware artifacts.
-- Do not include source IPs in dictionary exports.
-- Keep repository visibility private.
+**Menos humo, más evidencia.**
