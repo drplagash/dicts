@@ -1,56 +1,40 @@
-<p align="center">
-  <img src="docs/portada.svg" alt="Credential Dictionaries" width="100%">
-</p>
-
 # dicts
 
-Diccionarios privados de Oráculo SOC.
+Private credential dictionaries for Oraculo SOC.
 
-Este repo es para uso interno. Acá no quiero una vidriera llena de carpetas raras: quiero abrir, encontrar las claves, encontrar los pares usuario/password y seguir trabajando como una persona normal, no como un arqueólogo de YAML.
+This repo is for the owner/operator. It should be fast to open and obvious to use. No maze, no decorative noise, no masked view pretending to be useful.
 
-## Acceso rápido
+## Quick access
 
-| Quiero ver | Archivo |
-|---|---|
-| Listado actualizado de claves/passwords | [`raw/passwords.txt`](raw/passwords.txt) |
-| Pares usuario/password observados | [`raw/userpass.observed.tsv`](raw/userpass.observed.tsv) |
+Main files:
 
-Esos son los dos archivos principales. La rutina debería mantenerlos actualizados.
+- [Updated password list](raw/passwords.txt)
+- [Updated username list](raw/usernames.txt)
+- [Username/password pairs](raw/userpass.tsv)
 
-## Para análisis interno
+Hashes kept for internal matching:
 
-- `raw/passwords.txt`: lista directa de claves observadas.
-- `raw/userpass.observed.tsv`: pares usuario/password observados, con contexto de aparición cuando aplique.
+- [Password SHA256 list](derived/passwords.sha256.txt)
+- [Username/password SHA256 pairs](derived/userpass.sha256.tsv)
 
-No usar la vista con `***` para análisis interno. Los archivos masked existen solo para exportar o mostrar sin exponer valores completos. Para mí, en privado, se usa la vista legible.
+## What matters here
 
-## Hashes
+`raw/passwords.txt` is the current password dictionary.
 
-Los hashes se dejan en `derived/` para control, comparación y export seguro. No son el camino principal para revisar el repo.
+`raw/usernames.txt` is the current username dictionary.
 
-## Qué no mirar primero
+`raw/userpass.tsv` is the current user/password pair list.
 
-- `derived/`: transformaciones, hashes y versiones masked.
-- `metadata/`: manifiestos y contexto técnico.
-- `docs/`: assets y documentación auxiliar.
+The update routine is expected to keep those files current. If the routine creates extra exports, they are secondary working files, not the human-facing view.
 
-Sirven, pero no son la entrada humana principal.
+## Human rule
 
-## Regla simple
+For normal use, open the three files above. Hash files stay available for matching, deduplication and safer comparisons.
 
-Para trabajar:
+Masked files are not the primary view. They are only useful when preparing a safe export outside this private workspace.
 
-```text
-raw/passwords.txt
-raw/userpass.observed.tsv
-```
+## Boundaries
 
-Para exportar o mostrar algo sin valores completos:
+This repository stays private. It is not a payload repository, not a malware repository and not a public leak dump.
 
-```text
-derived/
-```
-
-## Nota
-
-Este repo debe seguir privado. El material público va en `payloads`. Los diccionarios son material operativo interno.
+Human view first. Machine leftovers second.
